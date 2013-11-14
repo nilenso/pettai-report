@@ -25,3 +25,20 @@
           %td= i.period_start
           %td= i.period_end
           %td= i.amount
+
+%h2 Unbilled Hours
+%h3
+  Total Unbilled
+  = @projects.flat_map(&:uninvoiced_time).sum(&:hours)
+
+.unbilled-hours
+  %table{border: 1}
+    %thead
+      %tr
+        %th Project
+        %th Unbilled Hours
+    %tbody
+      - @projects.each do |i|
+        %tr
+          %td= i.name
+          %td= i.uninvoiced_time.sum(&:hours)
