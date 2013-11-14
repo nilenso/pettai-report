@@ -1,0 +1,7 @@
+production:
+  secret_app_key: <%= ENV["SUPER_SECRET_KEY"] %>
+
+  harvest_subdomain: <%= ENV["HARVEST_SUBDOMAIN"] %>
+  harvest_username: <%= ENV["HARVEST_USER_NAME"] %>
+  harvest_password: <%= ENV["HARVEST_PASSWORD"] %>
+  

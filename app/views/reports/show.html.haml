@@ -1,0 +1,27 @@
+%h1 Reports
+
+%h2 Open Invoices
+%h3
+  Total Due
+  = @invoices.sum(&:amount)
+.invoices
+  %table{border: 1}
+    %thead
+      %tr
+        %th Client
+        %th Description
+        %th Issued On
+        %th Due Date
+        %th Period Start
+        %th Period End
+        %th Amount
+    %tbody
+      -@invoices.each do |i|
+        %tr
+          %td= i.client.name
+          %td= i.subject
+          %td= i.issued_at
+          %td= i.due_at
+          %td= i.period_start
+          %td= i.period_end
+          %td= i.amount
