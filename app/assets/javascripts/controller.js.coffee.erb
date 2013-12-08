@@ -1,0 +1,16 @@
+app = angular.module('App', ['ngRoute']);
+
+app.config ($routeProvider) ->
+  $routeProvider
+    .when("/",
+      controller: "pettaiReportController"
+      templateUrl: "<%= asset_path('report.html') %>"
+      resolve:
+        reportPromise: ($http) ->
+          console.log "in promise"
+          $http.get('/report/new.json')
+    )
+
+app.controller 'pettaiReportController', ['$scope', 'reportPromise', ($scope, reportPromise) ->
+  $scope.barGraphData = reportPromise.data
+]
